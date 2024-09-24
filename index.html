@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test only產品資料生成 XML</title>
+    <script>
+        //   const productCount = productList.children.length;
+        function addProduct() {
+            const productList = document.getElementById("product-list");
+            const productCount = productList.children.length;
+
+            const newProduct = document.createElement("div");
+            newProduct.innerHTML = `
+                <h3>產品</h3>
+                <label for="Sku${productCount}">產品編號:</label>
+                <input type="text" id="Sku${productCount}" name="Sku[]" required><br>
+
+                <label for="Name${productCount}">產品名稱:</label>
+                <input type="text" id="Name${productCount}" name="Name[]" required><br>
+                
+                <label for="Description${productCount}">產品敘述:</label>
+                <input type="text" id="Description${productCount}" name="Description[]" required><br>
+                
+                <label for="URL${productCount}">產品網址:</label>
+                <input type="text" id="URL${productCount}" name="URL[]" required><br>
+
+                <label for="Price${productCount}">售價:</label>
+                <input type="number" id="Price${productCount}" name="Price[]" required><br> 
+                
+                <label for="Largeimage${productCount}">圖片網址:</label>
+                <input id="Largeimage${productCount}" name="Largeimage[]" required></input><br>
+                
+                <label for="Category${productCount}">分類:</label>
+                <input id="Category${productCount}" name="Category[]" required></input><br>
+            `;
+            productList.appendChild(newProduct);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>產品資料生成 XML</h1>
+    <form action="generate_xml.php" method="POST">
+        <div id="product-list">
+            <h3>產品</h3>
+            <label for="Sku0">產品編號:</label>
+            <input type="text" id="Sku0" name="Sku[]" required><br>
+
+            <label for="Name0">產品名稱:</label>
+            <input type="text" id="Name0" name="Name[]" required><br>
+
+            <label for="Description0">產品敘述:</label>
+            <input type="text" id="Description0" name="Description[]" required><br>
+
+            <label for="URL0">產品網址:</label>
+            <input type="text" id="URL0" name="URL[]" required><br>
+
+            <label for="Price0">售價:</label>
+            <input type="number" id="Price0" name="Price[]" required><br>
+
+            <label for="Largeimage0">圖片網址:</label>
+            <input id="Largeimage0" name="Largeimage[]" required></input><br>
+
+            <label for="Category0">分類:</label>
+            <input id="Category0" name="Category[]" required></input><br>
+        </div>
+        <button type="button" onclick="addProduct()">新增產品</button><br><br>
+        <input type="submit" value="生成 XML">
+    </form>
+</body>
+
+</html>
